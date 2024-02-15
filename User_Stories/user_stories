@@ -1,0 +1,22 @@
+Possible System Users
+
+Administrator:
+•	Login: Authenticate into the system.
+•	Manage Users: Add, modify, or remove user profiles and access rights.
+•	Configure Review Reminders: Set parameters for when entries should be reviewed.
+•	Monitor Activity: Track new vendor entries and updates.
+•	Generate Reports: Access and generate system usage reports.
+
+Vendor:
+•	Login: Authenticate into the system.
+•	Enter New Data: Add information about their new products.
+•	Attach Documents: Upload relevant PDF documents.
+•	Update Information: Modify existing details.
+
+Information Discovery User:
+•	Login: Authenticate into the system.
+•	Search for Vendors: Utilize search capabilities based on specific criteria.
+•	View Vendor Details: Access detailed information about selected vendors.
+•	Access Vendor Websites: Click on links to vendors' websites for additional information.
+•	View Attached Documents: Open and view PDF documents attached to vendors.
+•	Leave Comments and Ratings: Provide feedback during the review process.
