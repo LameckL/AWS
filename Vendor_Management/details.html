@@ -1,0 +1,145 @@
+<div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
+                    <div class="app-card-body px-4 w-100" style="padding:30px;">
+                        <div class="item border-bottom py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><h6>Software Name</h6></div>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>{{ software.name }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item border-bottom py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><h6>Company Name</h6></div>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>
+                                        <a href="{% url 'vendor_detail' vendor_id=software.vendor.id %}">
+                                            {{ software.vendor.vendor_name }}
+                                        </a>
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item border-bottom py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><h6>Company Website</h6></div>
+                                </div>
+                                <div class="col-auto">
+                                    <strong><a href="{{ software.vendor.company_website_url }}" target="_blank">
+                                        {{ software.vendor.company_website_url }}</a></strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item border-bottom py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><h6>Last Demo Date</h6></div>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>{{ software.last_demo_date }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item border-bottom py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><h6>Last Review Date</h6></div>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>{{ software.last_review_date }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item border-bottom py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><h6>Cloud Status</h6></div>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>{{ software.cloud_status }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item border-bottom py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><h6>Next Review Date</h6></div>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>
+                                        {% if software.next_review_date %}
+                                            {{ software.next_review_date }}
+                                        {% else %}
+                                            N/A
+                                        {% endif %}
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item border-bottom py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><h6>Software Type</h6></div>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>{{ software.software_type }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item border-bottom py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><h6>Module</h6></div>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>
+                                        {{ software.module }}
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item border-bottom py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><h6>Client Type</h6></div>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>
+                                        {{ software.client_type }}
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item border-bottom py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><h6>Business Area</h6></div>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>
+                                        {{ software.business_area }}
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item py-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <div class="item-label"><h6>Documents</h6></div>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>
+                                        {% for document in software.documents.all %}
+                                            <a href="{{ document.document.url }}">{{ document.document }}</a>{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

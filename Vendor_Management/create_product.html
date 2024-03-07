@@ -1,0 +1,60 @@
+{% include 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="app-content pt-3 p-md-3 p-lg-4">
+    <div class="container-xl">
+        <div class="app-card app-card-orders-table shadow-sm mb-5">
+            <div class="app-card-body" style="padding: 30px;">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="form-group col-md-6 mb-1">
+                            {{ product_form.name|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-md-6 mb-1">
+                            {{ product_form.software_type|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-md-6 mb-1">
+                            {{ product_form.vendor|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-md-6 mb-1">
+                            {{ product_form.cloud_status|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-md-6 mb-1">
+                            {{ product_form.additional_information|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-md-6 mb-1">
+                            {{ product_form.module|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-md-6 mb-1">
+                            {{ product_form.business_area|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-md-6 mb-1">
+                            {{ product_form.client_type|as_crispy_field }}
+                        </div>
+                        {{ document_formset.management_form }}
+                        <div class="form-group col-md-6 mb-1">
+                            {% for form in document_formset %}
+                            {{ form.document|as_crispy_field }}
+                            {% endfor %}
+                        </div>
+                        <div class="form-group col-md-6 mb-1">
+                            {{ product_form.internal_professional_services|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <br>
+                    <span>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="{% url 'applications' %}" type="button" class="btn btn-secondary">Cancel</a>
+                    </span>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
