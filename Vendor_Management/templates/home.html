@@ -1,0 +1,88 @@
+{% include 'index.html' %}
+{% load static %}
+{% block content %}
+
+<div class="app-content pt-3 p-md-3 p-lg-4">
+    <div class="container-xl">
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-lg-4">
+                <div class="app-card app-card-stat shadow-sm h-100">
+                    <div class="app-card-body p-3 p-lg-4">
+                        <h4 class="stats-type mb-1">Total Vendors</h4>
+                        <div class="stats-figure">{{ companies }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+                <div class="app-card app-card-stat shadow-sm h-100">
+                    <div class="app-card-body p-3 p-lg-4">
+                        <h4 class="stats-type mb-1">Vendor Applications</h4>
+                        <div class="stats-figure">{{ applications }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+                <div class="app-card app-card-stat shadow-sm h-100">
+                    <div class="app-card-body p-3 p-lg-4">
+                        <h4 class="stats-type mb-1">Total Users</h4>
+                        <div class="stats-figure">{{ users }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav id="orders-table-tab" class="app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link active" >
+                LATEST VENDOR APPLICATIONS
+            </a>
+        </nav>
+
+        <div class="app-card app-card-orders-table shadow-sm mb-5">
+            <div class="app-card-body" style="padding:30px;">
+                <div class="table-responsive">
+                    <table class="table app-table-hover mb-0 text-left">
+                        <thead>
+                        <tr>
+                            <th class="cell">#</th>
+                            <th class="cell">Name</th>
+                            <th class="cell">Software Type</th>
+                            <th class="cell">Vendor</th>
+                            <th class="cell">Date Added</th>
+                            <th class="cell">Last Review Date</th>
+                            <th class="cell">Modules</th>
+                            <th class="cell">Added By</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if latest_applications %}
+                        {% for application in latest_applications %}
+                        <tr>
+                            <td class="cell">{{ forloop.counter }}</td>
+                            <td class="cell">
+                                <a href="{% url 'product_detail' product_id=application.id %}">
+                                    {{ application.name }}
+                                </a>
+                            </td>
+                            <td class="cell">{{ application.software_type }}</td>
+                            <td class="cell">
+                                <a href="{% url 'vendor_detail' vendor_id=application.vendor.id %}">
+                                    {{ application.vendor.vendor_name }}
+                                </a>
+                            </td>
+                            <td class="cell">{{ application.created_at }}</td>
+                            <td class="cell">{{ application.last_review_date }}</td>
+                            <td class="cell">{{ application.module }}</td>
+                            <td class="cell">{{ application.created_by }}</td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
